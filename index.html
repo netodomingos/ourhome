@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contagem Regressiva 🏠</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+      body {
+          font-family: 'Poppins', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #fde4e4;
+          margin: 0;
+          padding: 20px;
+      }
+      .container {
+          text-align: center;
+          background: white;
+          padding: 30px;
+          border-radius: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          max-width: 90%;
+      }
+      h1 {
+          color: #d63384;
+          font-weight: 600;
+      }
+      p {
+          font-size: 1.8em;
+          font-weight: 400;
+          color: #6a0572;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Contagem Regressiva 🏠</h1>
+      <p>Faltam:</p>
+      <p id="contador"></p>
+      <p>Para morar-mos juntos!💕</p>
+    </div>
+    <script>
+      function calcularTempo() {
+          const hoje = new Date().toLocaleString("en-US", { timeZone: "America/Recife" });
+          const dataHoje = new Date(hoje);
+          const dataAlvo = new Date("2027-07-01T00:00:00-03:00");
+
+          const diferenca = dataAlvo - dataHoje;
+          const diasFaltando = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+          const horasFaltando = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutosFaltando = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+          const segundosFaltando = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+          document.getElementById("contador").innerText = `${diasFaltando} dias.\n${horasFaltando} horas.\n${minutosFaltando} minutos.\n${segundosFaltando} segundos.`;
+      }
+
+      calcularTempo();
+      setInterval(calcularTempo, 1000); // Atualiza a cada segundo
+    </script>
+  </body>
+</html>
